@@ -1,0 +1,45 @@
+pipeline {
+    agent {
+        node {
+            label 'Agent'
+        }
+    }
+    options {
+        // timeout(time: 10, unit: 'SECONDS') 
+        disableConcurrentBuilds()
+    }
+    environment {
+        COURSE = "DevOps"
+        appVersion = "" // defining here empty and can be used for all stages
+        ACC_ID = "799345568171"
+        project = "roboshop"
+        component = "catalogue"
+    }
+    stages{
+        stage('Deploy'){ // This is a test stage
+            steps {
+                script {
+                    withAWS(region = "us-east-1", credentials = "aws-auth"){
+                        sh """
+                            aws eks update-kubeconfig --region us-east-1 --name roboshop
+                            kubectl get nodes
+                        """
+                    }
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo 'I will say hello again regardless of build result'
+            cleanWs()
+        }
+        success {
+            echo "I will run this if build is success"
+        }
+        changed {
+            echo "I will run this if pipeline status is changed"
+        }
+    }
+}
