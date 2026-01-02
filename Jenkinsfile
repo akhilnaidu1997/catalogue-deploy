@@ -8,10 +8,10 @@ properties([
 ])
 
 def configmap = [
-    appVersion = "${params.appVersion}"
-    project = "roboshop"
-    component = "catalogue"
-    environment = "${params.environment}"
+    appVersion: (params.appVersion)
+    project: "roboshop"
+    component: "catalogue"
+    environment: (params.environment)
 ]
 
 eksdeploy(configmap)
