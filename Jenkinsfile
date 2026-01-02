@@ -3,7 +3,7 @@
 properties([
     parameters([
         string(name: 'appVersion'),
-        choice(name: 'environment', defaultValue: 'dev')
+        string(name: 'environment', defaultValue: 'dev')
     ])
 ])
 
