@@ -14,4 +14,4 @@ def configmap = [
     environment: (params.environment)
 ]
 
-eksdeploy(configmap)
+EKSdeploy(configmap)
