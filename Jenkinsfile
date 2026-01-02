@@ -3,7 +3,7 @@
 properties([
     parameters([
         string(name: 'appVersion', defaultValue: ''),
-        choice(name: 'Environment', defaultValue: 'dev')
+        choice(name: 'environment', defaultValue: 'dev')
     ])
 ])
 
@@ -11,7 +11,7 @@ def configmap = [
     appVersion = "${params.appVersion}"
     project = "roboshop"
     component = "catalogue"
-    Environment = "${params.Environment}"
+    Environment = "${params.environment}"
 ]
 
 EKSdeploy.groovy
