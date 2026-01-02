@@ -2,7 +2,7 @@
 
 properties([
     parameters([
-        string(name: 'appVersion'),
+        string(name: 'appVersion', defaultValue: ''),
         string(name: 'environment', defaultValue: 'dev')
     ])
 ])
