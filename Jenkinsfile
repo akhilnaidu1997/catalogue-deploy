@@ -11,7 +11,7 @@ def configmap = [
     appVersion = "${params.appVersion}"
     project = "roboshop"
     component = "catalogue"
-    Environment = "${params.environment}"
+    environment = "${params.environment}"
 ]
 
-EKSdeploy.groovy
+eksdeploy.groovy
